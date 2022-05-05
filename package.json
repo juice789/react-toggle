@@ -1,0 +1,66 @@
+{
+  "name": "@juice789/react-toggle",
+  "version": "3.0.0",
+  "description": "react toggle component",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "test": "jest",
+    "storybook": "start-storybook",
+    "build": "rollup -c",
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages"
+  },
+  "keywords": [
+    "react",
+    "toggle",
+    "switch",
+    "component"
+  ],
+  "author": "juice789",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juice789/react-toggle"
+  },
+  "bugs": {
+    "url": "https://github.com/juice789/react-toggle/issues"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.17.9",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.3",
+    "@rollup/plugin-node-resolve": "^13.2.0",
+    "@storybook/addon-storysource": "^6.4.21",
+    "@storybook/react": "^6.4.21",
+    "@storybook/storybook-deployer": "^2.8.11",
+    "@testing-library/react": "^12.0.0",
+    "jest": "^27.5.1",
+    "jest-styled-components": "^7.0.8",
+    "prettier": "^2.6.2",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "rollup": "^2.70.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}
