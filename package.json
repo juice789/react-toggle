@@ -1,6 +1,6 @@
 {
   "name": "@juice789/react-toggle",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "react toggle component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
