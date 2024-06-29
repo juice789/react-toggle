@@ -81,14 +81,14 @@ export const Styling = () => {
       ...defaults,
       border: '1px solid #c6eca9',
       background: '#c6eca9',
-      [':hover']: {
+      ['&:hover']: {
         border: '1px solid #537638'
       },
       ['> div']: {
-        [':nth-child(2)']: {
+        ['&:nth-child(2)']: {
           color: '#1b9e2c'
         },
-        [':nth-child(3)']: {
+        ['&:nth-child(3)']: {
           color: '#c77265'
         }
       }
@@ -108,14 +108,14 @@ export const Styling = () => {
       ...defaults,
       border: '1px solid #f6dad8',
       background: '#f6dad8',
-      [':hover']: {
+      ['&:hover']: {
         border: '1px solid #a6544e'
       },
       ['> div']: {
-        [':nth-child(2)']: {
+        ['&:nth-child(2)']: {
           color: '#1b9e2c'
         },
-        [':nth-child(3)']: {
+        ['&:nth-child(3)']: {
           color: '#c77265'
         }
       }
@@ -136,7 +136,7 @@ export const Styling = () => {
       border: '0px',
       background: '#8954b2',
       boxShadow: '0 0 0 1px #cca3eb',
-      [':hover']: {
+      ['&:hover']: {
         background: '#ad6cdf',
         border: '0px',
         boxShadow: '0 0 0 1px #cca3eb, 0 0 0 2px #be8be5'
@@ -152,7 +152,7 @@ export const Styling = () => {
     thumb: (defaults) => ({
       ...defaults,
       background: '#f3eafa',
-      [':hover']: {
+      ['&:hover']: {
         background: '#fbf8fe'
       }
     })
@@ -196,7 +196,7 @@ export const Demo = () => {
       ...defaults,
       border: '0px',
       boxShadow: '0 0 0 1px #3a3747',
-      [':hover']: {
+      ['&:hover']: {
         border: '0px',
         boxShadow: '0 0 0 1px #3a3747'
       },
@@ -218,7 +218,7 @@ export const Demo = () => {
       border: '0px',
       boxShadow: '0 0 0 1px #333',
       background: '#efefef',
-      [':hover']: {
+      ['&:hover']: {
         border: '0px',
         boxShadow: '0 0 0 1px #333'
       },
@@ -244,7 +244,7 @@ export const Demo = () => {
       border: '0px',
       boxShadow: '0 0 0 1px #333',
       background: '#333',
-      [':hover']: {
+      ['&:hover']: {
         border: '0px',
         boxShadow: '0 0 0 1px #333'
       },
@@ -270,7 +270,7 @@ export const Demo = () => {
       border: '0px',
       background: '#c6eca9',
       boxShadow: '0 0 0 1px #c6eca9',
-      [':hover']: {
+      ['&:hover']: {
         border: '0',
         boxShadow: '0 0 0 1px #c6eca9, 0 0 0 2px #537638'
       }
@@ -287,7 +287,7 @@ export const Demo = () => {
       border: '0px',
       background: '#f6dad8',
       boxShadow: '0 0 0 1px #f6dad8',
-      [':hover']: {
+      ['&:hover']: {
         border: '0',
         boxShadow: '0 0 0 1px #f6dad8, 0 0 0 2px #a6544e'
       }
