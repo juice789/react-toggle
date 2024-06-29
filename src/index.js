@@ -31,15 +31,15 @@ const Toggle = ({
   _styles.padding = padding
 
   return (
-    <Container styles={_styles}>
-      <Track onClick={onClick} styles={_styles}>
-        <ThumbOuter styles={_styles}>
-          <Thumb styles={_styles} on={_on}>
+    <Container $styles={_styles}>
+      <Track onClick={onClick} $styles={_styles}>
+        <ThumbOuter $styles={_styles}>
+          <Thumb $styles={_styles} $on={_on}>
             {text}
           </Thumb>
         </ThumbOuter>
-        <TrackContent styles={_styles}>{children[0] || null}</TrackContent>
-        <TrackContent styles={_styles}>{children[1] || null}</TrackContent>
+        <TrackContent $styles={_styles}>{children[0] || null}</TrackContent>
+        <TrackContent $styles={_styles}>{children[1] || null}</TrackContent>
       </Track>
     </Container>
   )

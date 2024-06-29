@@ -4,12 +4,12 @@ const container = () => ({
   position: 'relative'
 })
 
-const track = ({ styles }) => ({
+const track = ({ $styles }) => ({
   display: 'flex',
   background: '#3a3747',
-  borderRadius: styles.defaultSize,
-  width: `calc(${styles.defaultSize} * 2)`,
-  height: styles.defaultSize,
+  borderRadius: $styles.defaultSize,
+  width: `calc(${$styles.defaultSize} * 2)`,
+  height: $styles.defaultSize,
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -17,38 +17,36 @@ const track = ({ styles }) => ({
   cursor: 'pointer',
   border: '1px solid #3a3747',
   transition: 'background 0.2s ease',
-  [':hover']: {
+  ['&:hover']: {
     background: '#3a3747',
     border: '1px solid #6e66a6'
   }
 })
 
-const thumbOuter = ({ styles }) => ({
+const thumbOuter = ({ $styles }) => ({
   display: 'flex',
   position: 'absolute',
   alignItems: 'center',
   justifyContent: 'center',
-  width: styles.defaultSize,
-  height: styles.defaultSize
+  width: $styles.defaultSize,
+  height: $styles.defaultSize
 })
 
-const thumb = ({ styles, on }) => ({
+const thumb = ({ $styles, $on }) => ({
   transition: 'transform 0.2s ease',
   position: 'absolute',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   userSelect: 'none',
-  transform: `translateX(
-    ${on ? 'calc(100% + ' + styles.padding + ')' : '0%'}
-  )`,
+  transform: `translateX( ${$on ? 'calc(100% + ' + $styles.padding + ')' : '0%'} )`,
   textAlign: 'center',
   background: '#6e66a6',
-  width: `calc(${styles.defaultSize + ' - ' + styles.padding})`,
-  height: `calc(${styles.defaultSize + ' - ' + styles.padding})`,
+  width: `calc(${$styles.defaultSize + ' - ' + $styles.padding})`,
+  height: `calc(${$styles.defaultSize + ' - ' + $styles.padding})`,
   background: '#6e66a6',
   color: '#faf9f8',
-  borderRadius: styles.defaultSize,
+  borderRadius: $styles.defaultSize,
   fontSize: '0.7rem'
 })
 
@@ -73,8 +71,8 @@ const defaultStyles = {
 
 const makeComponent = (key) =>
   styled.div((props) =>
-    props?.styles?.[key]
-      ? css(props.styles[key](defaultStyles[key](props), props))
+    props?.$styles?.[key]
+      ? css(props.$styles[key](defaultStyles[key](props), props))
       : css(defaultStyles[key](props))
   )
 
