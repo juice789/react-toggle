@@ -1,8 +1,15 @@
-# Toggle
+# react-toggle
 
-A simple React toggle component. Features:  ✅ Custom styles  ✅ Custom track and thumb content  ✅ Controlled component  ✅ Styled components theme support
+A simple React toggle component.
 
-![gif](https://user-images.githubusercontent.com/7522770/163215309-a50ca6ad-38de-4539-98d5-37abf631642a.gif)
+✅ Custom styles  
+✅ Custom track and thumb content  
+✅ Controlled component  
+✅ Styled components theme support
+
+### Demo
+
+<a href="https://juice789.github.io/react-toggle/">Open demo</a>
 
 ### Installation
 
@@ -10,27 +17,35 @@ A simple React toggle component. Features:  ✅ Custom styles  ✅ Custom track 
 npm install @juice789/react-toggle
 ```
 
-### Demo
+### Builds
 
-Open storybook demo: <a href="https://juice789.github.io/react-toggle/">Open demo</a>
+Two builds are available depending on your needs:
+
+| Import | styled-components |
+| ------ | ----------------- |
+| `@juice789/react-toggle` | bundled |
+| `@juice789/react-toggle/themed` | external (peer) |
+
+The **themed** build requires `styled-components >=5.1` to be installed in your project. This gives you a single shared instance of styled-components, which is necessary if you want to access your app's theme values in custom styles via `props.theme`.
+
+The default build bundles its own isolated styled-components instance, so no extra install is needed — but `props.theme` will always be `{}` in custom styles, regardless of any `ThemeProvider` in your app.
 
 ### Usage
 
-```xml
+```jsx
 import Toggle from '@juice789/react-toggle'
 
 <Toggle />
 
-<Toggle text={<>thumb<br />txt</>} defaultSize={'50px'} >
+<Toggle text={<>thumb<br />txt</>} defaultSize={'50px'}>
   <Toggle.Left>I'm off</Toggle.Left>
   <Toggle.Right>I'm on</Toggle.Right>
 </Toggle>
-
 ```
 
 ### Props
 
-all props are optional
+All props are optional.
 
 | name        | type            | description                                                                                                                                                             |
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -43,32 +58,91 @@ all props are optional
 | defaultSize | css value       | Set this value to easily resize the component instead of setting custom style rules. Default: 25px.                                                                     |
 | padding     | css value       | Set this value to easily set the track padding instead of setting style rules. Default: 0px.                                                                            |
 
-### Styles object
+### Complete styling example
 
-Override any css rule of the component.
+Each key of the styles object accepts a function that receives the default styles as the first parameter and all props as the second. Return a CSS-in-JS object.
 
-The keys of the styles object may be: 'container', 'track', 'thumbOuter', 'thumb', 'trackContent'.
-A value of the object should a function that returns a valid css style in object format.
-The default style rules of the specific component is passed to the function as the first parameter. All other props are passed as the second parameter.
-Check out the Storybook demo for example code.
-
-Quick example:
+Use a single object to style both states, or an array of two objects for different off/on styles.
 
 ```javascript
 const styles = {
+  container: (defaults, props) => ({
+    ...defaults,
+    display: 'inline-block'
+  }),
   track: (defaults, props) => ({
     ...defaults,
-    background: 'rebeccapurple',
-    fontSize: '12px'
+    background: '#8954b2',
+    border: '0px',
+    boxShadow: '0 0 0 1px #cca3eb',
+    ['&:hover']: {
+      background: '#ad6cdf',
+      border: '0px',
+      boxShadow: '0 0 0 1px #cca3eb, 0 0 0 2px #be8be5'
+    }
+  }),
+  thumbOuter: (defaults, props) => ({
+    ...defaults,
+    padding: '2px'
+  }),
+  thumb: (defaults, props) => ({
+    ...defaults,
+    background: '#f3eafa',
+    color: '#333',
+    fontSize: '0.8rem',
+    ['&:hover']: {
+      background: '#fbf8fe'
+    }
   }),
   trackContent: (defaults, props) => ({
     ...defaults,
-    color: props.theme.mainColor, //ThemeProvider theme
-    fontWeight: 'bold'
+    color: '#e0d4f0',
+    fontWeight: 'bold',
+    fontSize: '0.8rem'
   })
 }
+
+<Toggle
+  isOn={false}
+  text={'OK'}
+  defaultSize={'40px'}
+  padding={'5px'}
+  styles={styles}
+  onChange={({ value }) => console.log(value)}
+  remap={{ 1: 'on', 0: 'off' }}
+>
+  <Toggle.Left>OFF</Toggle.Left>
+  <Toggle.Right>ON</Toggle.Right>
+</Toggle>
 ```
 
-## License
+### Using the themed build
+
+The `@juice789/react-toggle/themed` build uses your project's installed `styled-components` instance, which means style functions can access the active styled-components theme via `props.theme`.
+
+Wrap your app with `ThemeProvider` from styled-components and pass your theme object:
+
+```jsx
+import { ThemeProvider } from 'styled-components'
+import Toggle from '@juice789/react-toggle/themed'
+
+const theme = {
+  primary: '#6200ea',
+  background: '#1e1e1e'
+}
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <Toggle styles={{
+      trackContent: (defaults, props) => ({
+        ...defaults,
+        color: props.theme.primary
+      })
+    }} />
+  </ThemeProvider>
+)
+```
+
+### License
 
 MIT
